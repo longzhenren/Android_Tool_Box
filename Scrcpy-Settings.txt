@@ -1,0 +1,1 @@
+scrcpy --window-title "MI 5ÆÁÄ»»¥Áª By:LZR@BUAA" -S -r D:\Git\AndroidToolBox-for-pack\ScreenRecords\SccreenRecord20200831_202133.mp4 -f -b 8M

@@ -1,6 +1,4 @@
-# Android_Tool_Box
-Android_Tool_Box
-# Android Tool Box 开发文档
+# Android Tool Box 开发文档 (BUAA1921小学期作业)
 
 ##提示：如需使用投屏控制功能，请下载[依赖](https://github.com/Genymobile/scrcpy/releases/download/v1.16/scrcpy-win64-v1.16.zip)并解压到程序目录！
 
@@ -16,8 +14,58 @@ Windows10 2004 & Ubuntu 20.04 LTS(WSL) & Windows7 SP1
 - MIUI（7，8，10，12）& AOSP & LineageOS 16（Nigthly） & EMUI10.1
 
 ## 二. 项目描述
+本项目旨在构建一个简易、高效、可靠的高集成度安卓工具箱。项目以Python语言为基础，调用ftplib、Tkinter等库，辅以Java进行Android端软件开发，并通过调用Windows和Android Shell的方式执行ADB相关命令,实现获取设备信息、投屏控制、全功能通用刷机、高速文件传输、微信/QQ文件提取备份、软件批量安装、预装应用卸载等功能
 
+将复杂的操作简单化、自动化，使安卓高级操作上手更加容易
 
+已开发功能如下：
+## Python部分：
+
+### 1.Fastboot刷机实用工具
+
+#### 	卡刷
+
+#### 	线刷
+
+### 2.高速文件传输（无线FTP加有线ADB）
+
+#### 	高速上传
+
+#### 	下载
+
+### 3.屏幕投射（基于Scrcpy修改）
+
+#### 	本体
+
+#### 	操作控件和快捷键映射
+
+### 4.文件备份
+
+#### 	微信文件/图片一键备份
+
+####  QQ文件/图片一键备份
+
+#### 	系统图片一键备份
+
+#### 	应用&数据一键备份
+
+### 5.软件管理和自动化配置
+
+#### 	软件安装
+
+#### 	免root软件卸载
+
+#### 	软件激活工具
+
+##### 冰箱icebox
+
+##### 炼妖壶Island
+
+##### 黑阈Brevent
+
+## Android部分：
+
+####  FTP微型服务器
 
 ## 三. 编写目的
 
@@ -41,25 +89,23 @@ Android SDK 提供了相当丰富的扩展功能，基于ADB可以实现对系�
 
 ## 五. 模块与关系
 
-1. ### ADBMethods.py	
-
-   程序核心功能模块之一
-
-   通过系统命令行调用ADBShell与设备进行各种交互
-
-   后期可能用pyADB进行替换，便于高级调试
-
-2. #### FastbootFlash.py
+1. #### FastbootFlash.py
 
    刷机模块，提供线刷和卡刷功能
 
    需要调用ADBMethods和Sys
 
-3. #### FileBackUp.py
+2. #### FileBackUp.py
 
    备份模块，可备份文件/系统
 
    提供Recovery模式整机镜像备份和文件备份功能
+
+3. #### FileTrans.py
+
+   多线程文件高速传输模块
+
+   可用于快速在电脑与安卓设备之间传输文件
 
 4. #### main.py
 
@@ -67,14 +113,14 @@ Android SDK 提供了相当丰富的扩展功能，基于ADB可以实现对系�
 
    显示菜单并且按照用户操作调用各个模块的主方法
 
-5. #### Run.c/Run.exe
+5. ### Methods.py	
 
-   （有Bug，暂时废弃）C语言程序入口
+   程序核心功能模块
 
-   用于检测系统是否已经安装python环境，若无则自动安装
+   通过系统命令行调用ADBShell与设备进行各种交互
+   用于与系统Shell交互(调用命令行、获取系统路径等)
 
-   pythoninstaller不可用时的临时解决方案
-
+   后期可能用pyADB进行替换，便于高级调试
 6. #### runincmd.bat
 
    powershell脚本，用于启动纯ADB/Fastboot命令行
@@ -91,16 +137,36 @@ Android SDK 提供了相当丰富的扩展功能，基于ADB可以实现对系�
 
    提供特殊软件激活、软件批量安装、软件管理等
 
-9. #### SysMethods.py
 
-   程序核心功能模块之一
 
-   用于与系统Shell交互(调用命令行、获取系统路径等)
 
 ## 六. 功能和接口注释
 
-1. ### ADBMethods.py	
+1. ### Methods.py	
 
+   (str)建立管道，调用系统命令行执行command并返回stdout内容
+
+   ##### cmd(*command*):
+
+   (null)解压tar压缩文件，参数分别为文件名和解压路径
+
+   ##### unziptar(*filename*, *dirs*):
+
+   (bool/int)选项输入限定，非法选项要求重新输入，参数为选项个数
+
+   ##### InputJudge(*num*):
+
+   (弃用)(null)清屏并启动新的python文件
+
+   ##### NewProgram(*pyFileName*):
+
+   (str)引导文件拖拽并获取文件绝对路径，返回文件绝对路径
+
+   ##### dragtoWindowGetName():
+
+   (null)程序出口引导
+
+   ##### exitProgram(*num*):
    (*str*)当前连接设备的wlan0适配器的IP地址
 
    ##### IP = ""
@@ -219,13 +285,57 @@ Android SDK 提供了相当丰富的扩展功能，基于ADB可以实现对系�
 
    ##### Flashmain():
 
-3. (null)
 
-   findTarPacks():
 
-4. #### FileBackUp.py
+3. #### FileBackUp.py
 
-   
+   (str)微信图片路径
+
+   ##### wechatimage
+
+   (str)微信文件路径
+
+   ##### wechatfiles
+
+   (str)QQ图片路径
+
+   ##### qqimage
+
+   (str)QQ文件路径
+
+   ##### qqfiles
+
+   (str)系统图片路径
+
+   ##### pictures
+
+   (null)QQ备份
+
+   ##### qqbackup():
+
+   (null)微信备份
+
+   ##### wechatbackup():
+
+   (null)相册备份
+
+   ##### photobackup():
+
+   (null)备份恢复入口
+
+   ##### appBackandRestore():
+
+   (null)应用恢复
+
+   ##### apprestore():
+
+   (null)应用备份
+
+   ##### appbackup():
+
+   (null)主程序入口
+
+   ##### FileBackupmain():
 
 5. #### main.py
 
@@ -351,110 +461,17 @@ Android SDK 提供了相当丰富的扩展功能，基于ADB可以实现对系�
 
    ##### Softmain():
 
-8. #### SysMethods.py
-
-   (str)建立管道，调用系统命令行执行command并返回stdout内容
-
-   ##### cmd(*command*):
-
-   (null)解压tar压缩文件，参数分别为文件名和解压路径
-
-   ##### unziptar(*filename*, *dirs*):
-
-   (bool/int)选项输入限定，非法选项要求重新输入，参数为选项个数
-
-   ##### InputJudge(*num*):
-
-   (弃用)(null)清屏并启动新的python文件
-
-   ##### NewProgram(*pyFileName*):
-
-   (str)引导文件拖拽并获取文件绝对路径，返回文件绝对路径
-
-   ##### dragtoWindowGetName():
-
-   (null)程序出口引导
-
-   ##### exitProgram(*num*):
 
 ## 七. 参考资料
-
-## 八. 项目进度预估
-
-## 十五. 性能分析与优化
-# Android 手机实用工具集(BUAA1921小学期作业)
-
-## 零、总体构思
-
-建立基于python语言的集成常用解锁、刷机、软件预装、投屏、优化和其他实用功能的一站式平台，提供Windows/Android端支持
-
-若有精力尽量开发GUI
-
-## 一、功能设计
-
-### 1.各大厂商解锁工具和教程提供
-
-### 2.Fastboot刷机实用工具
-
-#### 	Recovery刷入
-
-#### 	系统刷入（卡刷）
-
-### 3.ADB相关工具
-
-#### 	软件预装
-
-#### 	Root权限获取
-
-### 4.线刷工具和使用教程（争取静默操作或者提供引导教程等）
-
-### 5.高速文件传输（无线FTP协议加有线MTP协议）
-
-#### 	FTP协议软件包
-
-#### 	MTP协议控制
-
-### 6.屏幕投射（基于Scrcpy修改）
-
-#### 	本体
-
-#### 	操作控件和快捷键映射
-
-### 7.系统优化和软件自动化配置
-
-#### 	绿色守护
-
-#### 	黑域
-
-#### 	太极/面具等
-
-#### 	La系统工具箱
-
-#### 	冰箱icebox
-
-### 8.资源下载地址整合（各机型刷机包）
-
-#### 	各大论坛收集魔改版
-
-#### 	原版尽量找
+   太多了列不过来 CSDN是最好的老师（超大声）
 
 
+## 八. 不足和改进
+   界面太丑 使用powershell调用会好一点点
 
-## 二、使用技术
+   有些地方明显GUI效率更高（如Screen模块的配置选择）应当使用GUI而非命令行（文件选择部分已经改进了）
 
-### 1.python调用系统命令行
-
-### 2.ADB、FastBoot、Recovery操作（命令行）
-
-#### 	ADB操作：推送APP、Scrcpy交互、刷入Recovery
-
-#### 	FastBoot&Recovery操作：命令行推送&刷入刷机包、刷入功能组件（可集成）
-
-### 3.MTP、FTP、Samba、NFS等协议（python库）
-
-#### 	文件传输相关指令，可以配合APP客户端使用（类似于快传）
-
-### 4.Android Shell简单使用和各个优化软件的启动脚本优化
-
-#### 	查阅相关软件开发者提供的接口说明文档
+   由于直接调用打包好的项目，缺少Debug信息导致异常处理做的不够，在某些特殊情况下（如设备连接断开、网络连接断开等）程序会崩溃
+   
+   另外由于测试机型较为有限且基本都为小米手机，故没有对其他厂家的机型做适配 开学后会借其他手机进行测试和改进
 

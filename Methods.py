@@ -54,14 +54,18 @@ Reboot:
 
 
 def rebootList():
-    op = input("请选择操作：\n[1]重启到系统\n[2]重启到Recovery\n[3]重启到BootLoader\n[0]退出程序")
-    if op == '1':
+    os.system("cls")
+    print("+--------------重启菜单--------------+")
+    print("[1]重启到系统\n[2]重启到Recovery\n[3]重启到BootLoader\n[4]退出程序")
+    print("请选择-> ", end='')
+    op = InputJudge(4)
+    if op == 1:
         rebootUI()
-    elif op == '2':
+    elif op == 2:
         rebootRec()
-    elif op == '3':
+    elif op == 3:
         rebootBL()
-    elif op == '0':
+    elif op == 4:
         exitProgram(1)
     exitProgram(0)
 
@@ -160,7 +164,7 @@ def InputJudge(num):
         while True:
             command = input()
             if command not in ['Y', 'y', 'N', 'n']:
-                print("输入有误，请检查输入！")
+                print("输入有误,请检查输入!")
             else:
                 if command in ['y', 'Y']:
                     return True
@@ -172,20 +176,23 @@ def InputJudge(num):
             if command.isdigit():
                 intput = int(command)
                 if intput not in range(1, num+1):
-                    print("输入有误，请检查输入！")
+                    print("输入有误,请检查输入!")
                 else:
                     return intput
             else:
-                print("输入有误，请检查输入！")
+                print("输入有误,请检查输入!")
 
 
 def exitProgram(num):
     if num == 0:
-        print("\n操作已成功完成，程序退出中……")
+        print("\n操作已成功完成,程序退出中……")
+        time.sleep(1)
     elif num == 1:
-        print("\n用户终止操作，程序退出中……")
+        print("\n用户终止操作,程序退出中……")
+        time.sleep(1)
     elif num == 3:
-        print("\n出现异常，程序退出中……")
+        print("\n出现异常,程序退出中……")
+        time.sleep(1)
 
 
 '''
@@ -200,7 +207,7 @@ def NewProgram(pyFileName):
 
 
 def dragtoWindowGetName():
-    filedir = input("请将文件拖动到窗口，并点击窗口后按下Enter")
+    filedir = input("请将文件拖动到窗口,并点击窗口后按下Enter")
     return filedir
 
 

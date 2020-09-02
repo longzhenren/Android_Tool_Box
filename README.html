@@ -1,0 +1,547 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>README</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+  .typora-export h1::after, .typora-export h2::after, .typora-export h3::after, .typora-export h4::after, .typora-export h5::after, .typora-export h6::after { content: ""; display: block; height: 100px; margin-bottom: -100px; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        border-top: 1px solid #eee;
+        margin-top: .3em;
+    }
+}
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><h1><a name="android-tool-box-开发文档-buaa1921小学期作业" class="md-header-anchor"></a><span>Android Tool Box 开发文档 (BUAA1921小学期作业)</span></h1><p><span>##提示：如需使用投屏控制功能，请下载</span><a href='https://github.com/Genymobile/scrcpy/releases/download/v1.16/scrcpy-win64-v1.16.zip'><span>依赖</span></a><span>并解压到程序目录！</span></p><h2><a name="一-项目概述" class="md-header-anchor"></a><span>一. 项目概述</span></h2><p><span>本项目旨在构建一个简易、高效、可靠的高集成度安卓工具箱。项目以Python语言为基础，调用ftplib、Tkinter等库，辅以Java进行Android端软件开发，并通过调用Windows和Android Shell的方式执行ADB相关命令,实现获取设备信息、投屏控制、全功能通用刷机、高速文件传输、微信/QQ文件提取备份、软件批量安装、预装应用卸载等功能</span></p><p><span>将复杂的操作简单化、自动化，使安卓高级操作上手更加容易</span></p><h2><a name="二-环境及工具" class="md-header-anchor"></a><span>二. 环境及工具</span></h2><h3><a name="开发测试环境" class="md-header-anchor"></a><span>开发&amp;测试环境：</span></h3><ul><li><span>Windows10 2004 &amp; Ubuntu 20.04 LTS(WSL)</span></li><li><span>Python 3.8 </span></li><li><span>VSCode with Python Extension</span></li><li><span>Android Studio with SDK</span></li></ul><h3><a name="打包环境" class="md-header-anchor"></a><span>打包环境：</span></h3><ul><li><span>Windows7 SP1 </span></li><li><span>Python 3.5</span></li></ul><h3><a name="测试机型" class="md-header-anchor"></a><span>测试机型：</span></h3><ul><li><span>Xiaomi Gemini (Mi5) MIUI9 &amp; MIUI10</span></li><li><span>Redmi Raphael (K20 Pro) MIUI12</span></li><li><span>Huawei ELE-AL00 (P30) EMUI10.1</span></li><li><span>Redmi Nikel (Note4 MTK) MIUI7</span></li></ul><p>&nbsp;</p><h2><a name="三-功能设计" class="md-header-anchor"></a><span>三. 功能设计</span></h2><h2><a name="python部分" class="md-header-anchor"></a><span>Python部分：</span></h2><h3><a name="1fastboot刷机实用工具" class="md-header-anchor"></a><span>1.Fastboot刷机实用工具</span></h3><h4><a name="卡刷" class="md-header-anchor"></a><span>卡刷</span></h4><h4><a name="线刷" class="md-header-anchor"></a><span>线刷</span></h4><h3><a name="2高速文件传输ftpadb）" class="md-header-anchor"></a><span>2.高速文件传输（FTP&amp;ADB）</span></h3><h4><a name="高速上传" class="md-header-anchor"></a><span>高速上传</span></h4><h4><a name="下载" class="md-header-anchor"></a><span>下载</span></h4><h3><a name="3屏幕投射基于scrcpy）" class="md-header-anchor"></a><span>3.屏幕投射（基于Scrcpy）</span></h3><h4><a name="本体" class="md-header-anchor"></a><span>本体</span></h4><h4><a name="操作控件和快捷键映射" class="md-header-anchor"></a><span>操作控件和快捷键映射</span></h4><h3><a name="4文件备份" class="md-header-anchor"></a><span>4.文件备份</span></h3><h4><a name="微信文件图片一键备份" class="md-header-anchor"></a><span>微信文件/图片一键备份</span></h4><h4><a name="qq文件图片一键备份" class="md-header-anchor"></a><span>QQ文件/图片一键备份</span></h4><h4><a name="系统图片一键备份" class="md-header-anchor"></a><span>系统图片一键备份</span></h4><h4><a name="应用数据一键备份" class="md-header-anchor"></a><span>应用&amp;数据一键备份</span></h4><h3><a name="5软件管理和自动化配置" class="md-header-anchor"></a><span>5.软件管理和自动化配置</span></h3><h4><a name="软件安装" class="md-header-anchor"></a><span>软件安装</span></h4><h4><a name="免root软件卸载" class="md-header-anchor"></a><span>免root软件卸载</span></h4><h4><a name="软件激活工具" class="md-header-anchor"></a><span>软件激活工具</span></h4><h5><a name="冰箱icebox" class="md-header-anchor"></a><span>冰箱icebox</span></h5><h5><a name="炼妖壶island" class="md-header-anchor"></a><span>炼妖壶Island</span></h5><h5><a name="黑阈brevent" class="md-header-anchor"></a><span>黑阈Brevent</span></h5><h2><a name="android部分" class="md-header-anchor"></a><span>Android部分：</span></h2><h4><a name="ftp微型服务器" class="md-header-anchor"></a><span>FTP微型服务器</span></h4><h2><a name="四-编写目的" class="md-header-anchor"></a><span>四. 编写目的</span></h2><p>&nbsp;</p><p><span>现在的一键式刷机工具（如刷机精灵、线刷宝等）虽然能够提供简单易用的交互界面，但是存在不能保存配置以便批量刷机、刷机过程中植入广告程序和后门等缺陷；各大安卓论坛中提供的工具包分化过强，功能过于单一且与品牌、机型、版本等存在强绑定关系，无法做到工具的通用性；各厂家提供的刷机工具则高度定制化，无法修改部分预设，且各个厂家工具不互通，不能做到随心所欲；而直接调用Android SDK进行操作对于零编程基础的玩家更是非常不友好。</span></p><p><span>因此本项目结合作者八年的刷机经验，编写了基于Python的命令行程序，用户只需简单输入Y/N等操作就可以完成刷机流程，大大降低了刷机门槛，让每个用户都能充分体验到刷机的乐趣</span></p><p>&nbsp;</p><h2><a name="四-项目或功能背景" class="md-header-anchor"></a><span>四. 项目或功能背景</span></h2><p><span>Android SDK 提供了相当丰富的扩展功能，基于ADB可以实现对系统底层的修改和配置，提高Android设备的可玩性。但是基于ADB的大多应用需要有较高的命令行操作和编程语言基础，对于希望深度优化安卓设备而缺乏相关经验的普通用户非常不友好。</span></p><p><span>本项目利用Python语言极强的扩展性，粘合了Linux Shell、Android Debug Bridge、</span></p><p><span>因此，本项目利用Python语言通过调用Shell脚本的方式实现了简易的交互式ADB界面，同时整合并重写部分优秀的开源安卓实用工具，自行编写了小米机型的全自动刷机工具（MTK和高通方案），以及基于Scrcpy的非华为设备多屏协同解决方案、</span></p><p>&nbsp;</p><h2><a name="五-模块与关系" class="md-header-anchor"></a><span>五. 模块与关系</span></h2><ol start='' ><li><h4><a name="fastbootflashpy" class="md-header-anchor"></a><span>FastbootFlash.py</span></h4><p><span>刷机模块，提供线刷和卡刷功能</span></p><p><span>需要调用Methods</span></p></li><li><h4><a name="filebackuppy" class="md-header-anchor"></a><span>FileBackUp.py</span></h4><p><span>备份模块，可备份文件/应用</span></p><p><span>提供Recovery模式整机镜像备份和文件备份功能</span></p></li><li><h4><a name="filetranspy" class="md-header-anchor"></a><span>FileTrans.py</span></h4><p><span>多线程文件高速传输模块</span></p><p><span>可用于快速在电脑与安卓设备之间传输文件</span></p></li><li><h4><a name="mainpy" class="md-header-anchor"></a><span>main.py</span></h4><p><span>程序主入口</span></p><p><span>显示菜单并且按照用户操作调用各个模块的主方法</span></p></li><li><h4><a name="methodspy" class="md-header-anchor"></a><span>Methods.py</span><span>	</span></h4><p><span>程序核心功能模块</span></p><p><span>通过系统命令行调用ADBShell与设备进行各种交互</span>
+<span>用于与系统Shell交互(调用命令行、获取系统路径等)</span></p><p><span>后期可能用pyADB进行替换，便于高级调试</span></p></li><li><h4><a name="screenpy" class="md-header-anchor"></a><span>Screen.py</span></h4><p><span>投屏模块</span></p><p><span>调用Scrcpy项目，实现屏幕实时共享控制功能</span></p></li><li><h4><a name="softscriptpy" class="md-header-anchor"></a><span>SoftScript.py</span></h4><p><span>软件管理模块</span></p><p><span>提供特殊软件激活、软件批量安装、软件管理等</span></p></li></ol><p>&nbsp;</p><h2><a name="六-算法设计接口注释" class="md-header-anchor"></a><span>六. 算法设计&amp;接口注释</span></h2><ol start='' ><li><h3><a name="methodspy" class="md-header-anchor"></a><span>Methods.py</span><span>	</span></h3><p><span>(str)建立管道，调用系统命令行执行command并返回stdout内容</span></p><h5><a name="cmdcommand" class="md-header-anchor"></a><span>cmd(</span><em><span>command</span></em><span>):</span></h5><p><span>(null)解压tar压缩文件，参数分别为文件名和解压路径</span></p><h5><a name="unziptarfilename-dirs" class="md-header-anchor"></a><span>unziptar(</span><em><span>filename</span></em><span>, </span><em><span>dirs</span></em><span>):</span></h5><p><span>(bool/int)选项输入限定，非法选项要求重新输入，参数为选项个数</span></p><h5><a name="inputjudgenum" class="md-header-anchor"></a><span>InputJudge(</span><em><span>num</span></em><span>):</span></h5><p><span>(弃用)(null)清屏并启动新的python文件</span></p><h5><a name="newprogrampyfilename" class="md-header-anchor"></a><span>NewProgram(</span><em><span>pyFileName</span></em><span>):</span></h5><p><span>(str)引导文件拖拽并获取文件绝对路径，返回文件绝对路径</span></p><h5><a name="dragtowindowgetname" class="md-header-anchor"></a><span>dragtoWindowGetName():</span></h5><p><span>(null)程序出口引导</span></p><h5><a name="exitprogramnum" class="md-header-anchor"></a><span>exitProgram(</span><em><span>num</span></em><span>):</span></h5><p><span>(</span><em><span>str</span></em><span>)当前连接设备的wlan0适配器的IP地址</span></p><h5><a name="ip--" class="md-header-anchor"></a><span>IP = &quot;&quot;</span></h5><p><span>(</span><em><span>dict</span></em><span>)手机设备信息</span></p><h5><a name="mobileinfo--" class="md-header-anchor"></a><span>MobileInfo = {}</span></h5><p><span>(</span><em><span>str</span></em><span>)Fastboot返回的设备连接信息 格式：SN </span><span>*</span><span>t fastboot*</span></p><h5><a name="getfastbootconnection" class="md-header-anchor"></a><span>getFastbootConnection():</span></h5><p><span>(</span><em><span>bool</span></em><span>)有线连接状态，开启USB调试且处于正常开机状态返回True</span></p><h5><a name="usbconnected" class="md-header-anchor"></a><span>USBConnected():</span></h5><p><span>(</span><em><span>bool</span></em><span>)BootLoader连接状态，处于Bootloader模式返回True</span></p><h5><a name="blconnected" class="md-header-anchor"></a><span>BLConnected():</span></h5><p><span>(</span><em><span>bool</span></em><span>)无线连接状态，远程调试已连接则返回True</span></p><h5><a name="wlanconnected" class="md-header-anchor"></a><span>WLANConnected():</span></h5><p><span>(null)重启到系统</span></p><h5><a name="rebootui" class="md-header-anchor"></a><span>rebootUI():</span></h5><p><span>(null)重启到Bootloader</span></p><h5><a name="rebootbl" class="md-header-anchor"></a><span>rebootBL():</span></h5><p><span>(null)重启到Recovery</span></p><h5><a name="rebootrec" class="md-header-anchor"></a><span>rebootRec():</span></h5><p><span>(</span><em><span>dict</span></em><span>)获取build.prop记载的手机详细信息</span></p><h5><a name="getinfo" class="md-header-anchor"></a><span>getInfo():</span></h5><p><span>(</span><em><span>bool</span></em><span>)获取Bootloader加锁状态</span></p><h5><a name="lockstatus" class="md-header-anchor"></a><span>lockStatus():</span></h5><p><span>(</span><em><span>str</span></em><span>)获取电池电量</span></p><h5><a name="getbattery" class="md-header-anchor"></a><span>getBattery():</span></h5><p><span>(</span><em><span>str</span></em><span>)获取当前连接设备的wlan0适配器的IPV4地址</span></p><h5><a name="getipaddress" class="md-header-anchor"></a><span>getIPaddress():</span></h5><p><span>(</span><em><span>bool</span></em><span>)获取设备开机状态</span></p><h5><a name="powerstatus" class="md-header-anchor"></a><span>powerStatus():</span></h5><p><span>(null)传送sourcedir所指的文件或目录到设备rmpath目录下</span></p><h5><a name="pushfilesourcedir-rmpath" class="md-header-anchor"></a><span>pushFile(</span><em><span>sourcedir</span></em><span>, </span><em><span>rmpath</span></em><span>):</span></h5><p><span>(null)传送设备rmpath所指的文件或目录到本地destdir下</span></p><h5><a name="pullfilermpath-destdir" class="md-header-anchor"></a><span>pullFile(</span><em><span>rmpath</span></em><span>, </span><em><span>destdir</span></em><span>):</span></h5><p><span>(null)将拖拽到窗口的文件传输到设备rmpath所指的目录下</span></p><h5><a name="dragtopushrmpath" class="md-header-anchor"></a><span>dragtoPush(</span><em><span>rmpath</span></em><span>):</span></h5><p><span>(null)模拟点击坐标(x,y)</span></p><h5><a name="touchpointx-y" class="md-header-anchor"></a><span>touchPoint(</span><em><span>x</span></em><span>, </span><em><span>y</span></em><span>):</span></h5><p><span>(null)模拟滑动,从(x1,y1)到(x2,y2)</span></p><h5><a name="slidepointx1-y1-x2-y2" class="md-header-anchor"></a><span>slidePoint(</span><em><span>x1</span></em><span>, </span><em><span>y1</span></em><span>, </span><em><span>x2</span></em><span>, </span><em><span>y2</span></em><span>):</span></h5></li><li><h4><a name="fastbootflashpy" class="md-header-anchor"></a><span>FastbootFlash.py</span></h4><p><span>(list)Tar线刷包列表</span></p><h5><a name="tar--" class="md-header-anchor"></a><span>TAR = []</span></h5><p><span>(str)当前路径</span></p><h5><a name="path--osgetcwd" class="md-header-anchor"></a><span>path = os.getcwd()</span></h5><p><span>(list)当前路径下文件列表</span></p><h5><a name="listdir--oslistdirpathimages" class="md-header-anchor"></a><span>list_dir = os.listdir(path+&quot;</span><span>\</span><span>images</span><span>\</span><span>&quot;)</span></h5><p><span>(int)全局变量，tar个数</span></p><h5><a name="numoftars--0" class="md-header-anchor"></a><span>num_of_TARs = 0</span></h5><p><span>(null)寻找tar包并存入TAR[]</span></p><h5><a name="findtarpacks" class="md-header-anchor"></a><span>findTarPacks():</span></h5><p><span>(null)从fastboot重启到UI</span></p><h5><a name="fastbootreboot" class="md-header-anchor"></a><span>fastbootReboot():</span></h5><p><span>(null)重启菜单</span></p><h5><a name="rebootlist" class="md-header-anchor"></a><span>rebootList():</span></h5><p><span>(null)强制刷入指定文件 mode为设备目标分区，file为镜像文件</span></p><h5><a name="directflashmode-file" class="md-header-anchor"></a><span>directFlash(</span><em><span>mode</span></em><span>, </span><em><span>file</span></em><span>):</span></h5><p><span>(null)双清</span></p><h5><a name="fastbootwipe" class="md-header-anchor"></a><span>fastbootWipe():</span></h5><p><span>(null)主程序入口</span></p><h5><a name="flashmain" class="md-header-anchor"></a><span>Flashmain():</span></h5></li><li><h4><a name="filebackuppy" class="md-header-anchor"></a><span>FileBackUp.py</span></h4><p><span>(str)微信图片路径</span></p><h5><a name="wechatimage" class="md-header-anchor"></a><span>wechatimage</span></h5><p><span>(str)微信文件路径</span></p><h5><a name="wechatfiles" class="md-header-anchor"></a><span>wechatfiles</span></h5><p><span>(str)QQ图片路径</span></p><h5><a name="qqimage" class="md-header-anchor"></a><span>qqimage</span></h5><p><span>(str)QQ文件路径</span></p><h5><a name="qqfiles" class="md-header-anchor"></a><span>qqfiles</span></h5><p><span>(str)系统图片路径</span></p><h5><a name="pictures" class="md-header-anchor"></a><span>pictures</span></h5><p><span>(null)QQ备份</span></p><h5><a name="qqbackup" class="md-header-anchor"></a><span>qqbackup():</span></h5><p><span>(null)微信备份</span></p><h5><a name="wechatbackup" class="md-header-anchor"></a><span>wechatbackup():</span></h5><p><span>(null)相册备份</span></p><h5><a name="photobackup" class="md-header-anchor"></a><span>photobackup():</span></h5><p><span>(null)备份恢复入口</span></p><h5><a name="appbackandrestore" class="md-header-anchor"></a><span>appBackandRestore():</span></h5><p><span>(null)应用恢复</span></p><h5><a name="apprestore" class="md-header-anchor"></a><span>apprestore():</span></h5><p><span>(null)应用备份</span></p><h5><a name="appbackup" class="md-header-anchor"></a><span>appbackup():</span></h5><p><span>(null)主程序入口</span></p><h5><a name="filebackupmain" class="md-header-anchor"></a><span>FileBackupmain():</span></h5></li><li><h4><a name="mainpy" class="md-header-anchor"></a><span>main.py</span></h4><p><span>(null)输出菜单</span></p><h5><a name="printmenu" class="md-header-anchor"></a><span>printmenu():</span></h5><p><span>(null)输出手机信息</span></p><h5><a name="printinfo" class="md-header-anchor"></a><span>printinfo():</span></h5><p><span>(null)输出欢迎界面和Logo</span></p><h5><a name="printhello" class="md-header-anchor"></a><span>printHello():</span></h5><p><span>(null)输出关于我们</span></p><h5><a name="aboutproject" class="md-header-anchor"></a><span>aboutProject():</span></h5><p><span>(null)主菜单模块</span></p><h5><a name="mainmenu" class="md-header-anchor"></a><span>mainmenu():</span></h5><p>&nbsp;</p></li><li><h4><a name="screenpy" class="md-header-anchor"></a><span>Screen.py</span></h4><p><span>(str)当前路径</span></p><h5><a name="path--osgetcwd" class="md-header-anchor"></a><span>path = os.getcwd()</span></h5><p><span>(list)参数列表，格式如：[&quot;-m 1024&quot;,&quot;-f&quot;,...]</span></p><h5><a name="conf--" class="md-header-anchor"></a><span>conf = []</span></h5><p><span>(str)全局变量 参数字符串</span></p><h5><a name="config--" class="md-header-anchor"></a><span>config = &#39;&#39;</span></h5><p><span>(null)配置存取模块，调用外部Scrcpy-Settings.txt存取配置字符串</span></p><h5><a name="initializeconfig" class="md-header-anchor"></a><span>initializeConfig():</span></h5><p><span>(str)参数生成模块，生成config字符串</span></p><h5><a name="configgenerator" class="md-header-anchor"></a><span>configGenerator():</span></h5><p><span>(null)以有线连接方式启动，传入config字符串</span></p><h5><a name="usbconnectconfig" class="md-header-anchor"></a><span>USBconnect(config):</span></h5><p><span>(null)以无线连接(远程调试)方式启动，参数同USBconnect</span></p><h5><a name="wlanconnectconfig" class="md-header-anchor"></a><span>WLANconnect(config):</span></h5><p><span>(null)主程序入口，可从外部调用</span></p><h5><a name="screenmain" class="md-header-anchor"></a><span>Screenmain()：</span></h5></li><li><h4><a name="softscriptpy" class="md-header-anchor"></a><span>SoftScript.py</span></h4><p><span>(list)当前目录APK列表</span></p><h5><a name="apklist--" class="md-header-anchor"></a><span>Apklist = []</span></h5><p><span>(str)当前路径</span></p><h5><a name="path--osgetcwd" class="md-header-anchor"></a><span>path = os.getcwd()</span></h5><p><span>(list)当前目录文件列表</span></p><h5><a name="listdir--oslistdirpathapkfiles" class="md-header-anchor"></a><span>list_dir = os.listdir(path+&quot;</span><span>\</span><span>ApkFiles</span><span>\</span><span>&quot;)</span></h5><p><span>(int)全局变量，APK数量</span></p><h5><a name="numofapks--0" class="md-header-anchor"></a><span>num_of_APKs = 0</span></h5><p><span>(null)免root卸载软件 参数为apk包名</span></p><h5><a name="uninstallwithoutrootpackagename" class="md-header-anchor"></a><span>unInstallwithoutRoot(</span><em><span>PackageName</span></em><span>):</span></h5><p><span>(list)返回目录下APK列表</span></p><h5><a name="listapkfiles" class="md-header-anchor"></a><span>listAPKFiles():</span></h5><p><span>(null)格式化输出文件列表</span></p><h5><a name="printapklistnum" class="md-header-anchor"></a><span>printAPKList(</span><em><span>num</span></em><span>):</span></h5><p><span>(bool)是否存在指定文件</span></p><h5><a name="inapklistapkname" class="md-header-anchor"></a><span>inAPKList(</span><em><span>APKname</span></em><span>):</span></h5><p><span>(bool)询问是否安装</span></p><h5><a name="askforinstapkname" class="md-header-anchor"></a><span>askforInst(</span><em><span>APKname</span></em><span>):</span></h5><p><span>(null)安装应用</span></p><h5><a name="pushappapkname" class="md-header-anchor"></a><span>pushApp(</span><em><span>APKname</span></em><span>):</span></h5><p><span>(null)软件安装子程序入口</span></p><h5><a name="installsoftware" class="md-header-anchor"></a><span>installSoftware():</span></h5><p><span>(null)软件激活子程序入口</span></p><h5><a name="activesofts" class="md-header-anchor"></a><span>activeSofts():</span></h5><p><span>(null)冰箱激活组件</span></p><h5><a name="iceboxstart" class="md-header-anchor"></a><span>IceboxStart():</span></h5><p><span>(null)炼妖壶启动组件</span></p><h5><a name="islandstart" class="md-header-anchor"></a><span>IslandStart():</span></h5><p><span>(null)黑阈启动组件</span></p><h5><a name="breventstart" class="md-header-anchor"></a><span>BreventStart():</span></h5><p><span>(null)主程序入口</span></p><h5><a name="softmain" class="md-header-anchor"></a><span>Softmain():</span></h5></li></ol><h2><a name="七-部署与运行" class="md-header-anchor"></a><span>七. 部署与运行</span></h2><p><span>   在安装有Python3环境的电脑上可以直接调用</span><code>python main.py</code><span>运行程序</span></p><p><span>   除Methods.py外，其余程序均可通过</span><code>python xxx.py</code><span>执行</span></p><p><span>   此外也可以通过执行已经打包好的Main.exe启动程序，二者效果完全相同</span></p><p><span>   手机端要求开启USB调试和USB安装，小米手机需额外开启USB调试（安全模式）</span></p><p><span>   如需使用刷机功能，请确定当前设备已解锁BootLoader</span></p><p><span>   手机端FTP客户端请授予读写内部存储和网络完全控制权限</span></p><h2><a name="八-不足和改进" class="md-header-anchor"></a><span>八. 不足和改进</span></h2><ul><li><span>界面太丑 使用powershell调用会好一点</span></li><li><span>有些地方明显GUI效率更高（如Screen模块的配置选择）应当使用GUI而非命令行（文件选择部分已经改进了）</span></li><li><span>由于直接调用打包好的项目，缺少Debug信息导致异常处理做的不够，在某些特殊情况下（如设备连接断开、网络连接断开等）程序会崩溃。正在逐步以Py库的形式进行替换</span></li><li><span>当前仅支持单设备连接，后续添加批量刷机、机对机文件传输等多设备功能支持</span></li><li><span>由于测试机型较为有限且基本都为小米手机，故没有对其他厂家的机型做适配 开学后会借其他手机进行测试和改进</span></li></ul><h2><a name="九-心得与展望" class="md-header-anchor"></a><span>九. 心得与展望</span></h2><p><span>十天的时间对于开发这样一个功能比较复杂的软件来说实在是捉襟见肘了。原有的如手机遥控电脑、从手机重装电脑系统等很多计划之内的功能由于学习时间成本的问题，都没有得到最终实现，软件界面开发也不尽如人意。而且现在的软件也是站在巨人的肩膀上，调用了相当多的第三方程序。</span></p><p><span>在软件编写的过程中，我亲身参与到了小型软件开发的全过程中，逐渐体会到了写代码的酣畅淋漓的快感，测试时候遍地BUG的痛苦和绝望，在网上找到解决方法时的兴奋，半夜突然想到解决方案时跳起来记到纸上的激动和惊喜……</span></p><p><span>但是开发进行到后期的疲软也让我认识到不能总把自己封锁于自己的舒适空间，要大胆去尝试新的东西，了解新的方法，学习新的技能，而不能浅尝辄止。</span></p><p><span>另外写注释和读英文注释真的太让人头疼了（英语太烂</span></p><p><span>附上开发时间线如下：</span></p><ul><li><span>8.25 听课 继续自学Python 开始编写SoftScript.py 学习引用第三方库相关方法</span></li><li><span>8.26 查阅资料 开始编写Sreen.py和ADBMethods.py 在RedmiK20Pro上通过Screen测试</span></li><li><span>8.27 借手机测试Screen.py 修复Screen.py参数调用的BUG </span></li><li><span>8.28 编写FastbootFlash.py 从ADBMethods.py拆分出SysMethods.py 编写main.py 由于Pyinstaller不可用故编写Run.c和Run.exe 作为直接入口</span></li><li><span>8.29 使用AndroidStudio编写FTP客户端 安装虚拟机 搭建Python3.5环境用于使用PyInstaller 第一次打包测试 编写开发文档 在小米5上测试FastbootFlash失败，期间变砖数次 编写FileTrans.py</span></li><li><span>8.30 程序调用出现问题 在助教的指导下紧急修改模块划分 修正FastbootFlash的刷入Recovery后不引导导致被官方覆盖的BUG 修正FastbootFlash 修正ADB文件传输报错的BUG 优化界面交互,使用文件选择框代替拖入获取文件名 重写Main.py 准备交付</span></li><li><span>8.31 调整并完善程序 精简代码结构 删除冗余函数(1600-&gt;1200行) 规范格式化代码，梳理全局变量，调整函数和方法接口，调整交互界面 重写FileTrans.py并加入多线程支持 编写FileBackUp.py 制作答辩PPT</span></li><li><span>9.1 测试FileTrans.py 重写开发文档 上传项目到GitHub 调整交互界面细节(因去做核酸检测时医院信号不好而错过签到)</span></li></ul></div>
+</body>
+</html>

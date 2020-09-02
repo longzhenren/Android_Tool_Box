@@ -19,13 +19,16 @@ pictures = "/sdcard/DCIM/"
 
 
 def qqbackup():
-    print("***************QQ文件备份***************")
+    os.system("cls")
+    print("+--------------QQ文件备份--------------+")
     print("[1]备份QQ图片\t[2]备份QQ文档\n[3]全部备份\t[4]退出程序")
+    print("请选择-> ", end='')
     op = InputJudge(4)
     input("请选择备份目录,按Enter继续")
     backupdir = filedialog.askdirectory(title='选择备份目录')
     tm = time.strftime("%Y%m%d_%H%M%S", time.localtime())
-    os.mkdir(backupdir+"/QQbackup/")
+    if not os.path.exists(backupdir+"/QQbackup/"):
+        os.mkdir(backupdir+"/QQbackup/")
     os.mkdir(backupdir+"/QQbackup/"+tm+"/")
     os.mkdir(backupdir+"/QQbackup/"+tm+"/image/")
     os.mkdir(backupdir+"/QQbackup/"+tm+"/files/")
@@ -48,14 +51,16 @@ def qqbackup():
 
 
 def wechatbackup():
-    print("***************微信文件备份***************")
+    os.system("cls")
+    print("+--------------微信文件备份--------------+")
     print("[1]备份微信图片\t[2]备份微信文档\n[3]全部备份\t[4]退出程序")
-    input("请选择备份目录,按Enter继续")
-
+    print("请选择-> ", end='')
     op = InputJudge(4)
+    input("请选择备份目录,按Enter继续")
     backupdir = filedialog.askdirectory(title='选择备份目录')
     tm = time.strftime("%Y%m%d_%H%M%S", time.localtime())
-    os.mkdir(backupdir+"/Wechatbackup/")
+    if not os.path.exists(backupdir+"/Wechatbackup/"):
+        os.mkdir(backupdir+"/Wechatbackup/")
     os.mkdir(backupdir+"/Wechatbackup/"+tm+"/")
     os.mkdir(backupdir+"/Wechatbackup/"+tm+"/image/")
     os.mkdir(backupdir+"/Wechatbackup/"+tm+"/files/")
@@ -78,13 +83,16 @@ def wechatbackup():
 
 
 def photobackup():
-    print("***************图片备份***************")
+    os.system("cls")
+    print("+----------------图片备份----------------+")
     print("[1]备份系统图库\t[2]仅备份相机胶卷\n[3]退出程序")
-    input("请选择备份目录,按Enter继续")
+    print("请选择-> ", end='')
     op = InputJudge(3)
+    input("请选择备份目录,按Enter继续")
     backupdir = filedialog.askdirectory(title='选择备份目录')
     tm = time.strftime("%Y%m%d_%H%M%S", time.localtime())
-    os.mkdir(backupdir+"/Imagebackup/")
+    if not os.path.exists(backupdir+"/Imagebackup/"):
+        os.mkdir(backupdir+"/Imagebackup/")
     os.mkdir(backupdir+"/Imagebackup/"+tm+"/")
     if op == 1:
         print("正在备份图库")
@@ -99,8 +107,9 @@ def photobackup():
 
 
 def appBackandRestore():
-    print("************App备份还原工具************")
-    print("请选择：\n[1]备份全部App\t[2]还原全部APP\n[3]退出程序")
+    print("+--------------应用备份还原--------------+")
+    print("[1]备份全部App\t[2]还原全部APP\n[3]退出程序")
+    print("请选择-> ", end='')
     op = InputJudge(3)
     if op == 1:
         appbackup()
@@ -114,7 +123,7 @@ def apprestore():
     print("请选择备份文件")
     abdir = filedialog.askopenfilename(
         title="选择备份的.ab文件位置", filetypes=[('ADB备份文件', '*.ab'), ])
-    print("正在还原备份："+abdir[0])
+    print("正在还原备份:"+abdir[0])
     cmd("adb restore "+abdir)
     exitProgram(0)
 
@@ -130,27 +139,32 @@ def appbackup():
 
 
 def FileBackupmain():
+    os.system("cls")
     print("########################################")
     print("")
     print("                备份工具")
     print("              By:LZR@BUAA")
     print("")
     print("########################################")
+    time.sleep(1)
+    while True:
+        os.system("cls")
+        print("+--------------备份工具--------------+")
+        print("[1]一键备份照片\t[2]备份微信文档\n[3]备份QQ文档\t[4]备份手机应用\n[5]退出程序")
+        print("请选择-> ", end='')
+        op = InputJudge(5)
+        if op == 1:
+            photobackup()
+        elif op == 2:
+            wechatbackup()
+        elif op == 3:
+            qqbackup()
+        elif op == 4:
+            appBackandRestore()
+        elif op == 5:
+            break
+    exitProgram(1)
 
-    print("")
-
-    print("[1]一键备份照片\t[2]备份微信文档\n[3]备份QQ文档\t[4]备份手机应用\n[5]退出程序")
-    op = InputJudge(5)
-    if op == 1:
-        photobackup()
-    elif op == 2:
-        wechatbackup()
-    elif op == 3:
-        qqbackup()
-    elif op == 4:
-        appbackup()
-    elif op ==5:
-        exitProgram(1)
 
 if __name__ == "__main__":
     FileBackupmain()

@@ -2,23 +2,29 @@
 
 ##提示：如需使用投屏控制功能，请下载[依赖](https://github.com/Genymobile/scrcpy/releases/download/v1.16/scrcpy-win64-v1.16.zip)并解压到程序目录！
 
-
-## 一. 开发环境及工具
-
-Windows10 2004 & Ubuntu 20.04 LTS(WSL) & Windows7 SP1
-
-- VSCode with Python & C/C++ Extension
-- Python 3.8 & Python 3.5
-- Android SDK ToolKit
-- 测试机型：Xiaomi Gemini (Mi5) & Redmi Raphael (K20 Pro) &Huawei ELE-AL00 (P30) & Redmi Nikel (Note4 MTK)
-- MIUI（7，8，10，12）& AOSP & LineageOS 16（Nigthly） & EMUI10.1
-
-## 二. 项目描述
+## 一. 项目概述
 本项目旨在构建一个简易、高效、可靠的高集成度安卓工具箱。项目以Python语言为基础，调用ftplib、Tkinter等库，辅以Java进行Android端软件开发，并通过调用Windows和Android Shell的方式执行ADB相关命令,实现获取设备信息、投屏控制、全功能通用刷机、高速文件传输、微信/QQ文件提取备份、软件批量安装、预装应用卸载等功能
 
 将复杂的操作简单化、自动化，使安卓高级操作上手更加容易
 
-已开发功能如下：
+## 二. 环境及工具
+### 开发&测试环境：
+- Windows10 2004 & Ubuntu 20.04 LTS(WSL)
+- Python 3.8 
+- VSCode with Python Extension
+- Android Studio with SDK
+### 打包环境：
+- Windows7 SP1 
+- Python 3.5
+### 测试机型：
+- Xiaomi Gemini (Mi5) MIUI9 & MIUI10
+- Redmi Raphael (K20 Pro) MIUI12
+- Huawei ELE-AL00 (P30) EMUI10.1
+- Redmi Nikel (Note4 MTK) MIUI7
+
+
+
+## 三. 功能设计
 ## Python部分：
 
 ### 1.Fastboot刷机实用工具
@@ -27,13 +33,13 @@ Windows10 2004 & Ubuntu 20.04 LTS(WSL) & Windows7 SP1
 
 #### 	线刷
 
-### 2.高速文件传输（无线FTP加有线ADB）
+### 2.高速文件传输（FTP&ADB）
 
 #### 	高速上传
 
 #### 	下载
 
-### 3.屏幕投射（基于Scrcpy修改）
+### 3.屏幕投射（基于Scrcpy）
 
 #### 	本体
 
@@ -67,7 +73,7 @@ Windows10 2004 & Ubuntu 20.04 LTS(WSL) & Windows7 SP1
 
 ####  FTP微型服务器
 
-## 三. 编写目的
+## 四. 编写目的
 
 
 
@@ -93,11 +99,11 @@ Android SDK 提供了相当丰富的扩展功能，基于ADB可以实现对系�
 
    刷机模块，提供线刷和卡刷功能
 
-   需要调用ADBMethods和Sys
+   需要调用Methods
 
 2. #### FileBackUp.py
 
-   备份模块，可备份文件/系统
+   备份模块，可备份文件/应用
 
    提供Recovery模式整机镜像备份和文件备份功能
 
@@ -113,7 +119,7 @@ Android SDK 提供了相当丰富的扩展功能，基于ADB可以实现对系�
 
    显示菜单并且按照用户操作调用各个模块的主方法
 
-5. ### Methods.py	
+5. #### Methods.py	
 
    程序核心功能模块
 
@@ -121,10 +127,6 @@ Android SDK 提供了相当丰富的扩展功能，基于ADB可以实现对系�
    用于与系统Shell交互(调用命令行、获取系统路径等)
 
    后期可能用pyADB进行替换，便于高级调试
-6. #### runincmd.bat
-
-   powershell脚本，用于启动纯ADB/Fastboot命令行
-
 7. #### Screen.py
 
    投屏模块
@@ -140,7 +142,7 @@ Android SDK 提供了相当丰富的扩展功能，基于ADB可以实现对系�
 
 
 
-## 六. 功能和接口注释
+## 六. 算法设计&接口注释
 
 1. ### Methods.py	
 
@@ -284,8 +286,6 @@ Android SDK 提供了相当丰富的扩展功能，基于ADB可以实现对系�
    (null)主程序入口
 
    ##### Flashmain():
-
-
 
 3. #### FileBackUp.py
 
@@ -462,16 +462,46 @@ Android SDK 提供了相当丰富的扩展功能，基于ADB可以实现对系�
    ##### Softmain():
 
 
-## 七. 参考资料
-   太多了列不过来 CSDN是最好的老师（超大声）
+## 七. 部署与运行
+   在安装有Python3环境的电脑上可以直接调用`python main.py`运行程序
+
+   除Methods.py外，其余程序均可通过`python xxx.py`执行
+
+   此外也可以通过执行已经打包好的Main.exe启动程序，二者效果完全相同
+
+   手机端要求开启USB调试和USB安装，小米手机需额外开启USB调试（安全模式）
+
+   如需使用刷机功能，请确定当前设备已解锁BootLoader
+
+   手机端FTP客户端请授予读写内部存储和网络完全控制权限
 
 
 ## 八. 不足和改进
-   界面太丑 使用powershell调用会好一点点
+   - 界面太丑 使用powershell调用会好一点
 
-   有些地方明显GUI效率更高（如Screen模块的配置选择）应当使用GUI而非命令行（文件选择部分已经改进了）
+   - 有些地方明显GUI效率更高（如Screen模块的配置选择）应当使用GUI而非命令行（文件选择部分已经改进了）
 
-   由于直接调用打包好的项目，缺少Debug信息导致异常处理做的不够，在某些特殊情况下（如设备连接断开、网络连接断开等）程序会崩溃
+   - 由于直接调用打包好的项目，缺少Debug信息导致异常处理做的不够，在某些特殊情况下（如设备连接断开、网络连接断开等）程序会崩溃。正在逐步以Py库的形式进行替换
+
+   - 当前仅支持单设备连接，后续添加批量刷机、机对机文件传输等多设备功能支持
    
-   另外由于测试机型较为有限且基本都为小米手机，故没有对其他厂家的机型做适配 开学后会借其他手机进行测试和改进
+   - 由于测试机型较为有限且基本都为小米手机，故没有对其他厂家的机型做适配 开学后会借其他手机进行测试和改进
 
+## 九. 心得与展望
+十天的时间对于开发这样一个功能比较复杂的软件来说实在是捉襟见肘了。原有的如手机遥控电脑、从手机重装电脑系统等很多计划之内的功能由于学习时间成本的问题，都没有得到最终实现，软件界面开发也不尽如人意。而且现在的软件也是站在巨人的肩膀上，调用了相当多的第三方程序。
+
+在软件编写的过程中，我亲身参与到了小型软件开发的全过程中，逐渐体会到了写代码的酣畅淋漓的快感，测试时候遍地BUG的痛苦和绝望，在网上找到解决方法时的兴奋，半夜突然想到解决方案时跳起来记到纸上的激动和惊喜……
+
+但是开发进行到后期的疲软也让我认识到不能总把自己封锁于自己的舒适空间，要大胆去尝试新的东西，了解新的方法，学习新的技能，而不能浅尝辄止。
+
+另外写注释和读英文注释真的太让人头疼了（英语太烂
+
+附上开发时间线如下：
+- 8.25 听课 继续自学Python 开始编写SoftScript.py 学习引用第三方库相关方法
+- 8.26 查阅资料 开始编写Sreen.py和ADBMethods.py 在RedmiK20Pro上通过Screen测试
+- 8.27 借手机测试Screen.py 修复Screen.py参数调用的BUG 
+- 8.28 编写FastbootFlash.py 从ADBMethods.py拆分出SysMethods.py 编写main.py 由于Pyinstaller不可用故编写Run.c和Run.exe 作为直接入口
+- 8.29 使用AndroidStudio编写FTP客户端 安装虚拟机 搭建Python3.5环境用于使用PyInstaller 第一次打包测试 编写开发文档 在小米5上测试FastbootFlash失败，期间变砖数次 编写FileTrans.py
+- 8.30 程序调用出现问题 在助教的指导下紧急修改模块划分 修正FastbootFlash的刷入Recovery后不引导导致被官方覆盖的BUG 修正FastbootFlash 修正ADB文件传输报错的BUG 优化界面交互,使用文件选择框代替拖入获取文件名 重写Main.py 准备交付
+- 8.31 调整并完善程序 精简代码结构 删除冗余函数(1600->1200行) 规范格式化代码，梳理全局变量，调整函数和方法接口，调整交互界面 重写FileTrans.py并加入多线程支持 编写FileBackUp.py 制作答辩PPT
+- 9.1 测试FileTrans.py 重写开发文档 上传项目到GitHub 调整交互界面细节(因去做核酸检测时医院信号不好而错过签到)

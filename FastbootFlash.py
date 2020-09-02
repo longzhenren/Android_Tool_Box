@@ -22,6 +22,7 @@ def fastbootWipe():
 def Flashmain():
     MobileInfo = getInfo()
     # os.system("COLOR A")
+    os.system("cls")
     print("########################################")
     print("")
     print("                刷机工具")
@@ -29,26 +30,29 @@ def Flashmain():
     print("")
     print("########################################")
     print("欢迎使用!\n")
-    print("****************风险提示******************")
-    print("不正确操作可能导致设备无法启动甚至损坏!\n作者对此不承担任何责任 请三思而后行")
+    os.system("cls")
+    print("!!!!!!!!!!!!!!!!风险提示!!!!!!!!!!!!!!!!")
+    print("不正确操作可能导致设备无法启动甚至损坏!\n作者对此不承担任何责任 请自行决定风险\n")
+    print("+---------------刷机菜单---------------+")
     print("[1]卡刷(使用独立Zip/IMG安装)")
     print("[2]线刷(使用官方原版TAR安装)")
     print("[3]重启选项")
     print("[4]退出工具")
     cmd("adb disconnect")
-    print("********请选择工作模式 按Enter确认********")
-    op = InputJudge(3)
+    print("请选择-> ", end='')
+    op = InputJudge(4)
     if op == 1:
         print("是否已经刷入第三方Recovery?(Y/N)")
         if InputJudge(2):
             if cmd("adb devices").find("recovery") == -1:
                 input("准备重启到recovery模式,按Enter继续...")
                 rebootRec()
+            print("等待Recovery设备连接...")
             while True:
                 if cmd("adb devices").find("recovery") != -1:
                     break
                 time.sleep(2)
-            input("请手动在Recovery高级选项中开启ADB Sideload/ADB 线刷功能 按Enter继续...")
+            input("请手动在 Recovery->高级选项 中开启\nADB Sideload / ADB线刷 功能 按Enter继续...")
             print("请选择"+MobileInfo['brand']+" " +
                   MobileInfo['model'] + " 的zip刷机文件")
             imagefile = filedialog.askopenfilenames(
@@ -79,13 +83,13 @@ def Flashmain():
             else:
                 print("是否使用Fastboot模式进行刷机?(必须已解BL锁)(Y/N)")
                 if InputJudge(2):
-                    print("#####################高风险功能提醒#####################")
-                    print("警告！Fastboot刷机模式风险极高,请自行承担设备损坏等后果")
+                    print("!!!!!!!!!!!!!!!!高风险功能警告!!!!!!!!!!!!!!!!")
+                    print("警告!Fastboot刷机模式风险极高,请自行承担设备损坏等后果")
                     print("除非知道自己在做什么,否则请自行关闭程序!")
                     print("仍然要继续吗?(Y/N)")
                     if InputJudge(2):
                         rebootBL()
-                        print("选择模式：\n[Y]批量刷入\n[N]逐个刷入")
+                        print("选择模式:\n[Y]批量刷入\n[N]逐个刷入")
                         if InputJudge(2):
                             print(
                                 "请将.img或.bin格式刷机包放入打开的目录下")
@@ -97,13 +101,13 @@ def Flashmain():
                             for img in IMG_list:
                                 if os.path.splitext(img)[1] not in [".img", ".IMG", ".Img", ".bin", ".Bin", ".BIN"]:
                                     IMG_list.remove(img)
-                            print("待刷入的文件列表：")
+                            print("待刷入的文件列表:")
                             print(IMG_list)
                             print("请务必保持手机与电脑连接!\n最后一次确认,是否要刷入以上镜像?(Y/N)")
                             if InputJudge(2):
                                 print("")
                                 for img in IMG_list:
-                                    print("正在刷入文件："+img)
+                                    print("正在刷入文件:"+img)
                                     directFlash(os.path.splitext(img)[
                                                 0], path+"\\images\\FastbootImages\\"+img)
                                 fastbootWipe()
@@ -135,7 +139,7 @@ def Flashmain():
         while True:
             if BLConnected():
                 break
-        print("Fastboot连接成功！")
+        print("Fastboot连接成功!")
 
         tardir = filedialog.askopenfilenames(title='选择Tar文件', filetypes=[
             ('TGZ压缩文件', '*.TGZ'), ])[0]
@@ -145,18 +149,23 @@ def Flashmain():
         unziptar(tardir, imgdir+"\\" + tm)
         tardir = os.listdir(imgdir+"\\" + tm)[0]
         print(
-            "请选择工作模式：\n[1]全部擦写并清空数据\n[2]全部擦写但保留内部存储(\sdcard)\n[3]全部擦写并加BoolLoader锁(慎用)")
-        op = InputJudge(3)
+            "请选择工作模式:\n[1]全部擦写并清空数据\n[2]全部擦写但保留内部存储(\sdcard)\n[3]全部擦写并加BoolLoader锁(慎用)\n[4]退出程序")
+        op = InputJudge(4)
         if op == 1:
             cmd(imgdir+"\\" + tm+"\\"+tardir+"\\flash_all.bat")
         elif op == 2:
             cmd(imgdir+"\\" + tm+"\\"+tardir+"\\flash_all_except_storage.bat")
         elif op == 3:
             cmd(imgdir+"\\" + tm+"\\"+tardir+"\\flash_all_lock.bat")
+        elif op == 4:
+            exitProgram(1)
         exitProgram(0)
 
     elif op == 3:
         rebootList()
+
+    elif op == 4:
+        exitProgram(1)
 
 
 if __name__ == "__main__":

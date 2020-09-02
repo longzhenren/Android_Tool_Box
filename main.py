@@ -12,21 +12,17 @@ import Screen
 import SoftScript
 from Methods import *
 
-
-def aboutProject():
-    print("本项目在Android Debug Bridge的基础上二次封装\n基本整合了刷机过程中常用的工具\n旨在为Android玩家提供更加简单便捷的体验")
-    print("功能反馈：hljzhangzhibo@126.com")
-    print("作者B站：https://space.bilibili.com/24644307 (Ctrl+单击打开)")
-    print("\"每个男人 至死仍是少年。\"")
-    print("愿你刷机半生 归来仍是MIUI(逃)")
-    input("\n按Enter返回主菜单")
-    print(cmd("cls"))
+MobileInfo = {}
 
 
 def mainmenu():
     while True:
+        os.system("cls")
         printmenu()
         op = int(input())
+        while op not in range(0, 10):
+            print("输入有误，请重新输入")
+            op = int(input())
         if op == 1:
             printinfo()
         elif op == 2:
@@ -34,32 +30,58 @@ def mainmenu():
         elif op == 3:
             FastbootFlash.Flashmain()
         elif op == 4:
-            print("[1]高速文件传输\n[2]快速资料备份\n[3]返回主菜单")
-            c = InputJudge(3)
-            if c == 1:
-                FileTrans.FileTransmain()
-            elif c ==2:
-                FileBackUp.FileBackupmain()
-            elif c==3:
-                continue
+            FileTrans.FileTransmain()
         elif op == 5:
-            SoftScript.Softmain()
+            FileBackUp.FileBackupmain()
         elif op == 6:
-            FastbootFlash.rebootList()
+            SoftScript.Softmain()
         elif op == 7:
-            os.startfile(".//Readme.pdf")
+            rebootList()
         elif op == 8:
-            os.startfile(".//runincmd.bat")
+            os.startfile(os.getcwd()+"//README.html")
         elif op == 9:
-            aboutProject()
+            printcmd()
+            exit()
         elif op == 0:
             print("感谢使用！再见！")
             exit()
 
 
+def printcmd():
+    print("          adb和fastbooot 工具")
+    print("-----------------------------------------")
+    print("         adb和fastboot命令示例")
+    print(" adb命令：")
+    print("	adb devices		:列出adb设备")
+    print("	adb reboot		:重启设备")
+    print("	adb reboot bootloader	:重启到fastboot模式")
+    print("	adb reboot recovery	:重启到recovery模式")
+    print("	adb reboot edl		:重启到edl模式")
+    print("")
+    print(" fastboot命令：")
+    print("	fastboot devices			:列出fastboot设备")
+    print("	fastboot reboot				:重启设备")
+    print("	fastboot reboot-bootloader		:重启到fastboot模式")
+    print("	fastboot flash <分区名称> <镜像文件名>	:刷写分区")
+    print("	fastboot oem reboot-<模式名称> 		:重启到相应模式")
+    print("	fastboot oem device-info 		:查看解锁状态")
+    print("-----------------------------------------")
+
+
 def printHello():
-    # print(cmd("type logo.txt"))
-    print(cmd("type mainhead.txt"))
+    print(cmd("type logo.txt"))
+    time.sleep(2)
+    os.system("cls")
+    print("###############################################")
+    print("            Android  Tool  Box")
+    print("               安卓实用工具箱")
+    print("                 Ver:1.0")
+    print("              Author:LZR@BUAA")
+    print("                  2020.8")
+    print("###############################################")
+    print("提醒:使用前请确保安卓手机的\"USB调试\"功能已开启\n仅在MIUI上测试通过 其他厂商设备不保证全部功能可用\n刷机有风险,请三思而后行!")
+
+    # print(cmd("type mainhead.txt"))
 
 
 def printinfo():
@@ -67,13 +89,14 @@ def printinfo():
     print("制造商："+MobileInfo['brand'])
     print("安卓版本：" + MobileInfo['android']+"(API"+MobileInfo['API']+")")
     print("剩余电量："+MobileInfo['battery'])
-    input("\n按Enter返回主菜单")
-    print(cmd("cls"))
+    input("按Enter返回主菜单\n")
+    # os.system("cls")
 
 
 def printmenu():
-    print("***********主菜单*************")
-    print("[1]设备信息\t[2]投屏工具\n[3]刷机工具\t[4]传输备份\n[5]软件工具\t[6]重启选项\n[7]功能介绍\t[8]命令模式\n[9]关于项目\t[0]退出程序\n------------请选择------------")
+    print("+-----------主菜单-----------+")
+    print("[1]设备信息\t[2]投屏工具\n[3]刷机工具\t[4]文件快传\n[5]文件备份\t[6]软件工具\n[7]高级重启\t[8]关于项目\n[9]命令模式\t[0]退出程序")
+    print("请选择-> ", end='')
 
 
 if __name__ == "__main__":
@@ -91,4 +114,5 @@ if __name__ == "__main__":
             print("设备: "+MobileInfo['brand'] + " " +
                   MobileInfo['model'] + " (API" + MobileInfo['API'] + ") 已连接")
             break
+    time.sleep(2)
     mainmenu()

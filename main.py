@@ -41,13 +41,14 @@ def mainmenu():
             os.startfile(os.getcwd()+"//README.html")
         elif op == 9:
             printcmd()
-            exit()
+            sys.exit()
         elif op == 0:
             print("感谢使用！再见！")
-            exit()
+            sys.exit()
 
 
 def printcmd():
+    os.system("cls")
     print("          adb和fastbooot 工具")
     print("-----------------------------------------")
     print("         adb和fastboot命令示例")
@@ -74,17 +75,19 @@ def printHello():
     os.system("cls")
     print("###############################################")
     print("            Android  Tool  Box")
-    print("               安卓实用工具箱")
+    print("               安卓极客工具箱")
     print("                 Ver:1.0")
     print("              Author:LZR@BUAA")
     print("                  2020.8")
     print("###############################################")
-    print("提醒:使用前请确保安卓手机的\"USB调试\"功能已开启\n仅在MIUI上测试通过 其他厂商设备不保证全部功能可用\n刷机有风险,请三思而后行!")
+    print("提醒:使用前请确保安卓手机的\"USB调试\"功能已开启\n仅在MIUI上测试通过 其他各厂商设备不保证全部可用")
 
     # print(cmd("type mainhead.txt"))
 
 
 def printinfo():
+    os.system("cls")
+    print("+----------设备信息----------+")
     print("手机型号："+MobileInfo['model'])
     print("制造商："+MobileInfo['brand'])
     print("安卓版本：" + MobileInfo['android']+"(API"+MobileInfo['API']+")")
@@ -95,7 +98,7 @@ def printinfo():
 
 def printmenu():
     print("+-----------主菜单-----------+")
-    print("[1]设备信息\t[2]投屏工具\n[3]刷机工具\t[4]文件快传\n[5]文件备份\t[6]软件工具\n[7]高级重启\t[8]关于项目\n[9]命令模式\t[0]退出程序")
+    print("[1]设备信息\t[2]投屏工具\n[3]刷机工具\t[4]文件快传\n[5]备份还原\t[6]软件工具\n[7]高级重启\t[8]关于项目\n[9]命令模式\t[0]退出程序")
     print("请选择-> ", end='')
 
 

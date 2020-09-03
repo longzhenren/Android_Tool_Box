@@ -24,7 +24,7 @@ def qqbackup():
     print("[1]备份QQ图片\t[2]备份QQ文档\n[3]全部备份\t[4]退出程序")
     print("请选择-> ", end='')
     op = InputJudge(4)
-    input("请选择备份目录,按Enter继续")
+    print("请选择备份目录")
     backupdir = filedialog.askdirectory(title='选择备份目录')
     tm = time.strftime("%Y%m%d_%H%M%S", time.localtime())
     if not os.path.exists(backupdir+"/QQbackup/"):
@@ -35,19 +35,23 @@ def qqbackup():
     if op == 1:
         print("正在备份QQ图片,请稍等")
         pullFile(qqimage, backupdir+"/QQbackup/"+tm+"/image/")
-        exitProgram(0)
+        # exitProgram(0)
     elif op == 2:
         print("正在备份QQ文档,请稍等")
         pullFile(qqfiles, backupdir+"/QQbackup/"+tm+"/files/")
-        exitProgram(0)
+        # exitProgram(0)
     elif op == 3:
         print("正在备份QQ图片,请稍等")
         pullFile(qqfiles, backupdir+"/QQbackup/"+tm+"/files/")
         print("正在备份QQ文档,请稍等")
         pullFile(qqimage, backupdir+"/QQbackup/"+tm+"/image/")
-        exitProgram(0)
+        # exitProgram(0)
     elif op == 4:
-        exitProgram(1)
+        pass
+        # exitProgram(1)
+    print("操作完成,即将返回菜单")
+    time.sleep(2)
+    FileBackupmain()
 
 
 def wechatbackup():
@@ -56,7 +60,7 @@ def wechatbackup():
     print("[1]备份微信图片\t[2]备份微信文档\n[3]全部备份\t[4]退出程序")
     print("请选择-> ", end='')
     op = InputJudge(4)
-    input("请选择备份目录,按Enter继续")
+    print("请选择备份目录")
     backupdir = filedialog.askdirectory(title='选择备份目录')
     tm = time.strftime("%Y%m%d_%H%M%S", time.localtime())
     if not os.path.exists(backupdir+"/Wechatbackup/"):
@@ -67,28 +71,32 @@ def wechatbackup():
     if op == 1:
         print("正在备份微信图片,请稍等")
         pullFile(wechatimage, backupdir+"/Wechatbackup/"+tm+"/image/")
-        exitProgram(0)
+        # exitProgram(0)
     elif op == 2:
         print("正在备份微信文档,请稍等")
         pullFile(wechatfiles, backupdir+"/Wechatbackup/"+tm+"/files/")
-        exitProgram(0)
+        # exitProgram(0)
     elif op == 3:
         print("正在备份微信图片,请稍等")
         pullFile(wechatfiles, backupdir+"/Wechatbackup/"+tm+"/files/")
         print("正在备份微信文档,请稍等")
         pullFile(wechatimage, backupdir+"/Wechatbackup/"+tm+"/image/")
-        exitProgram(0)
+        # exitProgram(0)
     elif op == 4:
-        exitProgram(1)
+        pass
+        # exitProgram(1)
+    print("操作完成,即将返回菜单")
+    time.sleep(2)
+    FileBackupmain()
 
 
 def photobackup():
     os.system("cls")
     print("+----------------图片备份----------------+")
-    print("[1]备份系统图库\t[2]仅备份相机胶卷\n[3]退出程序")
+    print("[1]备份系统图库\t[2]仅备份相机胶卷\n[3]返回菜单")
     print("请选择-> ", end='')
     op = InputJudge(3)
-    input("请选择备份目录,按Enter继续")
+    print("请选择备份目录")
     backupdir = filedialog.askdirectory(title='选择备份目录')
     tm = time.strftime("%Y%m%d_%H%M%S", time.localtime())
     if not os.path.exists(backupdir+"/Imagebackup/"):
@@ -97,18 +105,22 @@ def photobackup():
     if op == 1:
         print("正在备份图库")
         pullFile(pictures, backupdir+"/Imagebackup/"+tm)
-        exitProgram(0)
+        # exitProgram(0)
     elif op == 2:
         print("正在备份照片")
         pullFile(pictures+"/Camera/", backupdir+"/Imagebackup/"+tm)
-        exitProgram(0)
+        # exitProgram(0)
     elif op == 3:
-        exitProgram(1)
+        pass
+    print("操作完成,即将返回菜单")
+    time.sleep(2)
+    FileBackupmain()
 
 
 def appBackandRestore():
+    os.system("cls")
     print("+--------------应用备份还原--------------+")
-    print("[1]备份全部App\t[2]还原全部APP\n[3]退出程序")
+    print("[1]备份全部App\t[2]还原全部APP\n[3]返回菜单")
     print("请选择-> ", end='')
     op = InputJudge(3)
     if op == 1:
@@ -116,16 +128,23 @@ def appBackandRestore():
     elif op == 2:
         apprestore()
     elif op == 3:
-        exitProgram(1)
+        pass
+    print("操作完成,即将返回菜单")
+    time.sleep(2)
+    FileBackupmain()
 
 
 def apprestore():
     print("请选择备份文件")
     abdir = filedialog.askopenfilename(
-        title="选择备份的.ab文件位置", filetypes=[('ADB备份文件', '*.ab'), ])
+        title="选择备份的.ab文件位置", filetypes=[('备份文件', '*.ab'), ])
     print("正在还原备份:"+abdir[0])
     cmd("adb restore "+abdir)
-    exitProgram(0)
+    # print("操作完成,即将返回菜单")
+    # time.sleep(2)
+    # FileBackupmain()
+
+    # exitProgram(0)
 
 
 def appbackup():
@@ -135,14 +154,18 @@ def appbackup():
     tm = time.strftime("%Y%m%d_%H%M%S", time.localtime())
     print("正在备份到"+tm+".ab")
     cmd("adb backup -apk -all -f "+backupdir+"/"+tm+".ab")
-    exitProgram(0)
+    # print("操作完成,即将返回菜单")
+    # time.sleep(2)
+    # FileBackupmain()
+
+    # exitProgram(0)
 
 
 def FileBackupmain():
     os.system("cls")
     print("########################################")
     print("")
-    print("                备份工具")
+    print("              备份还原工具")
     print("              By:LZR@BUAA")
     print("")
     print("########################################")

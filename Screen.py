@@ -26,7 +26,7 @@ def configGenerator(MobileInfo):
         conf.append(" -f")
 
     pixels = ['', '', '1920', '1440', '1080']
-    print("分辨率设置(原始比例):\n[1]默认\n[2]1920\n[3]1440\n[4]1080")
+    print("分辨率设置(原始比例):\n[1]默认 [2]1920 [3]1440 [4]1080")
     print("请选择-> ", end='')
     op = InputJudge(4)
     if op in [2, 3, 4]:
@@ -34,7 +34,7 @@ def configGenerator(MobileInfo):
 
     BitRate = ['', '20M', '10M', '8M', '4M', '2M']
     print(
-        "比特率设定(数值越大画质越好,延迟越大):\n[1]20Mbps\n[2]10Mbps\n[3]8Mbps(默认)\n[4]4Mbps\n[5]2Mbps")
+        "比特率设定(数值越大画质越好,延迟越大):\n[1]20Mbps [2]10Mbps [3]8Mbps(默认) [4]4Mbps [5]2Mbps")
     print("请选择-> ", end='')
     op = InputJudge(5)
     conf.append(" -b "+BitRate[int(op)])
@@ -42,9 +42,10 @@ def configGenerator(MobileInfo):
     print("启动屏幕录制?(Y/N)")
     if InputJudge(2):
         tm = time.strftime("%Y%m%d_%H%M%S", time.localtime())
-        conf.append(" -r "+os.path.expanduser('~') +
-                    "\\ScreenRecord" + tm + ".mp4")
+        conf.append(" -r "+"\""+os.path.expanduser('~') +
+                    "\\ScreenRecord"+ tm + ".mp4\"")
     config = ''.join(conf)
+    # print(config)
     settings = open("Scrcpy-Settings.txt", "w")
     settings.write(config)
     settings.close()
@@ -60,15 +61,20 @@ def initializeConfig(MobileInfo):
     if os.access("Scrcpy-Settings.txt", os.F_OK):
         settings = open("Scrcpy-Settings.txt", "r")
         if settings.read(6) == "scrcpy":
-            print("是否以上一次的配置启动?(Y/N)")
+            print("检测到保存的配置,以上一次的配置启动?(Y/N)")
             settings.seek(0, 0)
             if InputJudge(2):
                 config = settings.read()
                 if config.find('-r') != -1:
                     # print(config[:config.find('-r')])
+                    if not os.path.exists(os.path.expanduser('~') +"\\ScreenRecord\\"):
+                        os.mkdir(os.path.expanduser('~') +"\\ScreenRecord\\")
                     tm = time.strftime("%Y%m%d_%H%M%S", time.localtime())
-                    config = config[:config.find('-r')+3]+tm+".mp4"
+                    config = config[:config.find(
+                        '-r')+3]+"\""+os.path.expanduser('~') +"\\ScreenRecord"+ tm + ".mp4\""
                 return config
+    else:
+        print("请选择配置")
     config = configGenerator(MobileInfo)
     return config
 
@@ -112,11 +118,10 @@ def Screenmain():
                     cmd("adb reboot")
         time.sleep(2)
 
-    print("请选择配置")
     config = initializeConfig(MobileInfo)
-    # os.system("cls")
+    os.system("cls")
     print("+----------连接模式----------+")
-    print("[1]通过USB方式连接\n[2]通过网络连接\n[3]退出程序")
+    print("[1]有线连接\n[2]无线连接\n[3]退出程序")
     print("请选择-> ", end='')
     op = InputJudge(3)
     if op == 1:

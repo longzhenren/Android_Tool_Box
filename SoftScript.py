@@ -42,7 +42,7 @@ def inAPKList(APKname):
 def askforInst(APKname):
     print("是否要安装 " + APKname + " ?(Y/N)")
     if InputJudge(2):
-        print("请在手机端确认安装")
+        print("请注意手机端提示")
         return True
     else:
         return False
@@ -50,10 +50,10 @@ def askforInst(APKname):
 
 def pushApp(APKname):
     while True:
-        print("APK: " + APKname + " 准备安装,请在手机端确认")
+        print("APK: " + APKname.split("/")[-1] + " 准备安装")
         if USBConnected():
-            r = cmd("adb install " + APKname)
             print("正在安装 请稍候……")
+            r = cmd("adb install " + APKname)
             if r.find("Success"):
                 return True
                 break
@@ -86,11 +86,12 @@ def Uninstall():
     while True:
         pack = input("请输入要卸载的包名,输入N返回主菜单...\n")
         if pack in ["N", "n"]:
-            Softmain()
+            break
         else:
             unInstallwithoutRoot(pack)
             print("软件包 "+pack+" 卸载完成!")
-
+    time.sleep(2)
+    Softmain()
 
 
 def installSoftware():
@@ -109,6 +110,8 @@ def installSoftware():
             if askforInst(obj):
                 pushApp(apkdir+"/"+obj)
                 print(obj + "安装完成!")
+        print("所有操作完成,返回菜单中...")
+
     elif op == 2:
         fdir = filedialog.askopenfilenames(
             title='选择APK文件', filetypes=[('APK安装包', '*.apk'), ])
@@ -117,15 +120,19 @@ def installSoftware():
         for app in fdir:
             if askforInst(app.split("/")[-1]):
                 pushApp(app)
-        exitProgram(0)
+        print("所有操作完成,返回菜单中...")
+
+        # exitProgram(0)
     elif op == 3:
-        exitProgram(1)
+        # exitProgram(1)
+        pass
+    Softmain()
 
 
 def activeSofts():
     os.system("cls")
     print("+-------------软件激活工具-------------+")
-    print("[1]冰箱Icebox激活\n[2]黑阈激活\n[3]炼妖壶激活\n[4]返回主菜单")
+    print("[1]冰箱Icebox激活\n[2]黑阈激活\n[3]炼妖壶激活\n[4]返回菜单")
     print("请选择-> ", end='')
     op = InputJudge(4)
     if op == 1:
@@ -134,7 +141,7 @@ def activeSofts():
         BreventStart()
     elif op == 3:
         IslandStart()
-    elif op ==4:
+    elif op == 4:
         Softmain()
 
 
@@ -144,7 +151,7 @@ def IceboxStart():
     print("请选择运行模式,详细区别见IceBox应用")
     print("[1]设备管理员模式（需要清除账号）")
     print("[2]ADB普通模式（重启后需重新激活）")
-    print("[3]返回主菜单")
+    print("[3]返回菜单")
     print("请选择-> ", end='')
     op = InputJudge(3)
     print("正在激活冰箱IceBox功能……")
@@ -185,7 +192,7 @@ def Softmain():
     time.sleep(2)
     os.system("cls")
 
-    print("欢迎使用! 请连接手机并开启USB调试模式")
+    # print("欢迎使用! 请连接手机并开启USB调试模式")
     print("+--------------软件管理--------------+")
     print("[1]软件安装工具\n[2]软件激活器\n[3]免Root系统软件卸载(慎用)\n[4]退出程序")
     print("请选择-> ", end='')

@@ -10,8 +10,6 @@ from Methods import *
 path = os.getcwd()
 
 
-def directFlash(mode, file):
-    print(cmd("fastboot flash "+mode+" "+file))
 
 
 def fastbootWipe():
@@ -29,8 +27,8 @@ def Flashmain():
     print("              By:LZR@BUAA")
     print("")
     print("########################################")
-    print("欢迎使用!\n")
-    time.sleep(2)
+    # print("欢迎使用!\n")
+    time.sleep(1)
     os.system("cls")
     print("!!!!!!!!!!!!!!!!风险提示!!!!!!!!!!!!!!!!")
     print("不正确操作可能导致设备无法启动甚至损坏!\n作者对此不承担任何责任 请自行决定风险\n")
@@ -62,10 +60,10 @@ def Flashmain():
                   MobileInfo['brand']+" " + MobileInfo['model'] + "吗?(Y/N)")
             if InputJudge(2):
                 # cmd("adb wipe ")
-                messagebox.showinfo(
-                    '若已知晓,点击\"确定\"继续', '如需跨版本或系统类型\n(如MIUI-->LineageOS等)\n请断开连接并在Recovery中进行双清\n否则系统可能无法启动\n')
                 print("正在刷入 请在手机端查看相关信息...")
                 cmd("adb sideload "+imagefile[0])
+                messagebox.showinfo(
+                    '若已知晓,点击\"确定\"继续', '如需跨版本或系统类型\n(如MIUI-->LineageOS等)\n请断开连接并在Recovery中进行双清\n否则系统可能无法启动\n')
                 exitProgram(0)
             else:
                 exitProgram(1)

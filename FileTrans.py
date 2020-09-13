@@ -109,8 +109,10 @@ def Upload():
         Thread2 = threading.Thread(target=FTPUP)
         Thread1.start()
         Thread2.start()
-        print("文件将保存到/sdcard/AndroidToolBox/下,\n完成传输后程序自动退出")
-        FileTransmain()
+        # exitProgram(0)
+        # print("文件将保存到/sdcard/AndroidToolBox/下,\n完成传输后程序自动退出")
+        input("文件将保存到/sdcard/AndroidToolBox/下,\n请按Enter键开始传输,完成后程序将自动退出")
+
     elif op == 2:
         dirl = filedialog.askdirectory(title="请选择文件夹,不支持递归")
         print("正在启动传输……")
@@ -121,14 +123,11 @@ def Upload():
         Thread2 = threading.Thread(target=FTPUP)
         Thread1.start()
         Thread2.start()
-        print("文件将保存到/sdcard/AndroidToolBox/下,\n完成传输后程序自动退出")
-        FileTransmain()
+        input("文件将保存到/sdcard/AndroidToolBox/下,\n请按Enter键开始传输,完成后程序将自动退出")
         # exitProgram(0)
     elif op == 3:
         # os.system("chcp 936")
-        # exitProgram(1)
-        FileTransmain()
-
+        exitProgram(1)
 
 
 # def singleUpload():
@@ -213,7 +212,7 @@ def FileTransmain():
     print("正在启动FTP客户端……请在手机端授予权限")
     cmd("adb shell am start com.my.ftpdemo/.MainActivity")
     StartFTP(IP, fport, fuser, fpass)
-    print("FTP连接成功,在资源管理器中打开?(Y/N)")
+    print("FTP连接成功,是否在资源管理器中打开?(Y/N)")
     if InputJudge(2):
         cmd("explorer ftp://"+fuser+":"+fpass+"@"+IP+":"+str(fport))
         # messagebox.showinfo("登录信息", "服务器:" + IP + "\n端口号:" +

@@ -19,10 +19,11 @@ def mainmenu():
     while True:
         os.system("cls")
         printmenu()
-        op = int(input())
-        while op not in range(0, 10):
+        op1 = input()
+        while op1 not in ['1','2','3','4','5','6','7','8','9','0']:
             print("输入有误，请重新输入")
-            op = int(input())
+            op1 = input()
+        op = int(op1)
         if op == 1:
             printinfo()
         elif op == 2:
@@ -49,24 +50,25 @@ def mainmenu():
 
 def printcmd():
     os.system("cls")
-    print("          adb和fastbooot 工具")
-    print("-----------------------------------------")
-    print("         adb和fastboot命令示例")
-    print(" adb命令：")
-    print("	adb devices		:列出adb设备")
-    print("	adb reboot		:重启设备")
-    print("	adb reboot bootloader	:重启到fastboot模式")
-    print("	adb reboot recovery	:重启到recovery模式")
-    print("	adb reboot edl		:重启到edl模式")
-    print("")
-    print(" fastboot命令：")
-    print("	fastboot devices			:列出fastboot设备")
-    print("	fastboot reboot				:重启设备")
-    print("	fastboot reboot-bootloader		:重启到fastboot模式")
-    print("	fastboot flash <分区名称> <镜像文件名>	:刷写分区")
-    print("	fastboot oem reboot-<模式名称> 		:重启到相应模式")
-    print("	fastboot oem device-info 		:查看解锁状态")
-    print("-----------------------------------------")
+    os.system("runincmd.bat")
+    # print("          adb和fastbooot 工具")
+    # print("-----------------------------------------")
+    # print("         adb和fastboot命令示例")
+    # print(" adb命令：")
+    # print("	adb devices		:列出adb设备")
+    # print("	adb reboot		:重启设备")
+    # print("	adb reboot bootloader	:重启到fastboot模式")
+    # print("	adb reboot recovery	:重启到recovery模式")
+    # print("	adb reboot edl		:重启到edl模式")
+    # print("")
+    # print(" fastboot命令：")
+    # print("	fastboot devices			:列出fastboot设备")
+    # print("	fastboot reboot				:重启设备")
+    # print("	fastboot reboot-bootloader		:重启到fastboot模式")
+    # print("	fastboot flash <分区名称> <镜像文件名>	:刷写分区")
+    # print("	fastboot oem reboot-<模式名称> 		:重启到相应模式")
+    # print("	fastboot oem device-info 		:查看解锁状态")
+    # print("-----------------------------------------")
 
 
 def printHello():

@@ -137,7 +137,9 @@ def pushFile(sourcedir, rmpath):
 
 
 def pullFile(rmpath, destdir):
-    print(cmd("adb pull " + rmpath + " " + destdir))
+    r = cmd("adb pull " + rmpath + " " + destdir)
+    print(r)
+    return r
 
 
 def touchPoint(x, y):
@@ -194,6 +196,8 @@ def exitProgram(num):
         print("\n出现异常,程序退出中……")
         time.sleep(1)
 
+def directFlash(mode, file):
+    print(cmd("fastboot flash "+mode+" "+file))
 
 '''
 def fastbootReboot():

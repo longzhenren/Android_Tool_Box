@@ -156,11 +156,9 @@ def IceboxStart():
     op = InputJudge(3)
     print("正在激活冰箱IceBox功能……")
     if op == 1:
-        r = cmd(
-            "adb shell dpm set-device-owner com.catchingnow.icebox/.receiverDPMReceiver")
+        r = cmd("adb shell dpm set-device-owner com.catchingnow.icebox/.receiverDPMReceiver")
     if op == '2':
-        r = cmd(
-            "adb shell sh /sdcard/Android/data/com.catchingnow.icebox/files/start.sh")
+        r = cmd("adb shell sh /sdcard/Android/data/com.catchingnow.icebox/files/start.sh")
     if op == 3:
         Softmain()
 
@@ -169,8 +167,7 @@ def IslandStart():
     os.system("cls")
     print("+-------------炼妖壶激活工具-------------+")
     print("正在激活炼妖壶设备管理员功能……")
-    r = cmd(
-        "adb shell dpm set-device-owner com.oasisfeng.island/.IslandDeviceAdminReceiver")
+    r = cmd("adb shell dpm set-device-owner com.oasisfeng.island/.IslandDeviceAdminReceiver")
 
 
 def BreventStart():
